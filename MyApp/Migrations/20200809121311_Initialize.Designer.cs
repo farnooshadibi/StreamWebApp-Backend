@@ -9,8 +9,8 @@ using MyApp.Models;
 namespace MyApp.Migrations
 {
     [DbContext(typeof(StreamDBContext))]
-    [Migration("20200809101355_seedData")]
-    partial class seedData
+    [Migration("20200809121311_Initialize")]
+    partial class Initialize
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

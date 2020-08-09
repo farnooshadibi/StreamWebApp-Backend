@@ -42,6 +42,11 @@ Z:\Projects\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.AssemblyInfo.cs
 Z:\Projects\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorTargetAssemblyInfo.cache
 Z:\Projects\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.dll
 Z:\Projects\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.pdb
+Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.AssemblyInfoInputs.cache
+Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.AssemblyInfo.cs
+Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.csproj.CoreCompileInputs.cache
+Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorAssemblyInfo.cache
+Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorAssemblyInfo.cs
 Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\appsettings.Development.json
 Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\appsettings.json
 Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
@@ -50,13 +55,7 @@ Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\MyApp.runtimeconfig.json
 Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\MyApp.runtimeconfig.dev.json
 Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\MyApp.dll
 Z:\MyApp\MyApp\bin\Debug\netcoreapp2.1\MyApp.pdb
-Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.csprojAssemblyReference.cache
-Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.AssemblyInfoInputs.cache
-Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.AssemblyInfo.cs
-Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorAssemblyInfo.cache
-Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorAssemblyInfo.cs
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorTargetAssemblyInfo.cache
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.dll
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.pdb
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.genruntimeconfig.cache
-Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.csproj.CoreCompileInputs.cache

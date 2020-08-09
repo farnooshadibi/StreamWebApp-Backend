@@ -1,11 +1,42 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MyApp.Migrations
 {
-    public partial class seedData : Migration
+    public partial class Initialize : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "admins",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    UserName = table.Column<string>(nullable: true),
+                    Password = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_admins", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "customers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true),
+                    StreamKey = table.Column<int>(nullable: false),
+                    Url = table.Column<string>(nullable: true),
+                    Image = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_customers", x => x.Id);
+                });
+
             migrationBuilder.InsertData(
                 table: "admins",
                 columns: new[] { "Id", "Password", "UserName" },
@@ -24,20 +55,11 @@ namespace MyApp.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DeleteData(
-                table: "admins",
-                keyColumn: "Id",
-                keyValue: 1);
+            migrationBuilder.DropTable(
+                name: "admins");
 
-            migrationBuilder.DeleteData(
-                table: "customers",
-                keyColumn: "Id",
-                keyValue: 1);
-
-            migrationBuilder.DeleteData(
-                table: "customers",
-                keyColumn: "Id",
-                keyValue: 2);
+            migrationBuilder.DropTable(
+                name: "customers");
         }
     }
 }

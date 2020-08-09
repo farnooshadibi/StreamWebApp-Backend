@@ -56,20 +56,16 @@ namespace MyApp
                 app.UseHsts();
             }
 
-           
+
             app.UseCors("MyPolicy");
 
-            //
             app.UseCors(
                 options => options.WithOrigins("http://localhost:3000").AllowAnyMethod()
             );
             app.UseHttpsRedirection();
             app.UseMvc();
-            //SeedData.Initialize(app.ApplicationServices);
+            // SeedData.Initialize(app.ApplicationServices);
         }
-
-
-        //
 
     }
 }

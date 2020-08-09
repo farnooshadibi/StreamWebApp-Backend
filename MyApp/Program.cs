@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyApp.Models;
 
@@ -18,10 +17,6 @@ namespace MyApp
     {
         public static void Main(string[] args)
         {
-            //CreateWebHostBuilder(args)
-            //            .UseKestrel()
-            //            .UseIISIntegration()
-            //            .Build().Run();
 
             var host = CreateWebHostBuilder(args)
                 .UseKestrel()
@@ -29,9 +24,15 @@ namespace MyApp
                 .Build();
             using (var scope = host.Services.CreateScope())
             {
-                var db = scope.ServiceProvider.GetService<StreamDBContext>();
-                if (!db.Database.EnsureCreated())
-                    db.Database.Migrate();
+                //3. Get the instance of PersonDBContext in our services layer
+                var services = scope.ServiceProvider;
+                var context = services.GetRequiredService<StreamDBContext>();
+                //4. Call the DataGenerator to create sample data
+                //SeedData.Initialize(services);
+
+                if (!context.Database.EnsureCreated())
+                    context.Database.Migrate();
+
             }
             host.Run();
 
