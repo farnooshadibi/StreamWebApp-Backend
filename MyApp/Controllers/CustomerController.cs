@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -15,8 +16,8 @@ namespace MyApp.Controllers
     public class CustomerController : ControllerBase
     {
 
-        private PersonDBContext db;
-        public CustomerController(PersonDBContext context)
+        private StreamDBContext db;
+        public CustomerController(StreamDBContext context)
         {
             db = context;
         }
@@ -56,6 +57,22 @@ namespace MyApp.Controllers
                 //customer.StreamKey = Guid.NewGuid();
                 customer.StreamKey = newId;
                 customer.Url = string.Format("http://185.194.76.218:8080/live/{0}.m3u8", customer.StreamKey);
+
+                //if (customer.Image != null)
+                //{
+                //    if (customer.Image.Length > 0)//Convert Image to byte and save to database
+                //    {
+                //        byte[] p1 = null;
+                //        using (var fs1 = Image.OpenReadStream())
+                //        using (var ms1 = new MemoryStream())
+                //        {
+                //            fs1.CopyTo(ms1);
+                //            p1 = ms1.ToArray();
+                //        }
+                //        customer.Image = p1;
+                //    }
+                //}
+
 
                 db.customers.Add(customer);
                 db.SaveChanges();

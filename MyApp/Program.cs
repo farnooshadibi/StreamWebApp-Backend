@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using MyApp.Models;
 
@@ -16,27 +18,29 @@ namespace MyApp
     {
         public static void Main(string[] args)
         {
-            //CreateWebHostBuilder(args).Build().Run();
-            //1. Get the IWebHost which will host this application.
-            var host = CreateWebHostBuilder(args).Build();
+            //CreateWebHostBuilder(args)
+            //            .UseKestrel()
+            //            .UseIISIntegration()
+            //            .Build().Run();
 
-            //2. Find the service layer within our scope.
+            var host = CreateWebHostBuilder(args)
+                .UseKestrel()
+                .UseIISIntegration()
+                .Build();
             using (var scope = host.Services.CreateScope())
             {
-                //3. Get the instance of PersonDBContext in our services layer
-                var services = scope.ServiceProvider;
-                var context = services.GetRequiredService<PersonDBContext>();
-
-                //4. Call the DataGenerator to create sample data
-                DataGenerator.Initialize(services);
+                var db = scope.ServiceProvider.GetService<StreamDBContext>();
+                if (!db.Database.EnsureCreated())
+                    db.Database.Migrate();
             }
-
-            //Continue to run the application
             host.Run();
+
         }
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
+                   WebHost.CreateDefaultBuilder(args)
+                       .UseStartup<Startup>();
+
+
     }
 }

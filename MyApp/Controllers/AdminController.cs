@@ -15,8 +15,8 @@ namespace MyApp.Controllers
     [ApiController]
     public class AdminController : ControllerBase
     {
-        private PersonDBContext db;
-        public AdminController(PersonDBContext context)
+        private StreamDBContext db;
+        public AdminController(StreamDBContext context)
         {
             db = context;
         }
