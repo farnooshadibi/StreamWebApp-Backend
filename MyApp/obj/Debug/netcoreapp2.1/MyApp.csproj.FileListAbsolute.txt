@@ -59,3 +59,4 @@ Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.RazorTargetAssemblyInfo.cache
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.dll
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.pdb
 Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.genruntimeconfig.cache
+Z:\MyApp\MyApp\obj\Debug\netcoreapp2.1\MyApp.csprojAssemblyReference.cache

@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MyApp.Extra_Classes;
 using MyApp.Models;
+using MyApp.Models.ApiModels.Customer;
 
 namespace MyApp.Controllers
 {
@@ -114,5 +116,77 @@ namespace MyApp.Controllers
 
 
         }
+
+        // POST api/values/5
+        [HttpPut]
+        public ActionResult Put([FromBody] CustomerDto customerDto)
+        {
+            try
+            {
+                Response objResponse = new Response();
+
+                var customerObj = db.customers.FirstOrDefault(x => x.Id == customerDto.Id);
+                if (customerObj == null)
+                {
+                    return this.NotFound("person doesnt exist");
+                }
+                else
+                {
+                    customerObj.Name = customerDto.Name;
+                    customerObj.Url = customerDto.Url;
+                    customerObj.Image = customerDto.Image;
+                    db.customers.Update(customerObj);
+                    //db.Entry(customerObj).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+
+                objResponse.Data = customerDto;
+                objResponse.Status = true;
+                objResponse.Message = " Edit Successfully";
+
+
+                return Ok(objResponse);
+            }
+            catch (Exception e)
+            {
+                writeException.Write(e.Message, DateTime.Now, "Customet", "Put", "Admin");
+                return this.NotFound("Dosnt Edit successfully");
+            }
+        
+        
+        }
+
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                var customer = db.customers.SingleOrDefault(x => x.Id == id);
+
+
+                if (customer != null)
+                {
+                    db.customers.Remove(customer);
+                    db.SaveChanges();
+
+                    return Ok("Delete successfully");
+                }
+                else
+                {
+                    return this.NotFound("Dosnt Delete successfully");
+                }
+
+
+            }
+            catch (Exception e)
+            {
+                writeException.Write(e.Message, DateTime.Now, "Customer", "Delete", "Admin");
+                return this.NotFound("Dosnt Delete successfully");
+            }
+        }
+
     }
 }
